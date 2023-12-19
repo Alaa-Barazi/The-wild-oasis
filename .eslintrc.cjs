@@ -18,7 +18,7 @@ module.exports = {
     ],
     //var not in use will be yellow instead of red - warn instead error
 
-    "no-unused-vars": "warn",
+    "no-unused-vars": "off",
 
     //will not warn if i didn't pass props
 
