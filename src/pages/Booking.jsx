@@ -1,8 +1,8 @@
+import BookingDetail from "../features/bookings/BookingDetail";
+
 function Booking() {
     return (
-        <div>
-            Booking detail
-        </div>
+        <BookingDetail />
     )
 }
 
