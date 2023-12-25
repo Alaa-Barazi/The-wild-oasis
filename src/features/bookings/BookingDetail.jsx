@@ -10,7 +10,7 @@ import ButtonText from "../../ui/ButtonText";
 
 import Spinner from "../../ui/Spinner";
 import { useMoveBack } from "../../hooks/useMoveBack";
-import { useBooking } from "./usebooking";
+import { useBooking } from "./useBooking";
 import { useNavigate } from "react-router-dom";
 import { HiArrowUpOnSquare, HiTrash } from "react-icons/hi2";
 import { useCheckout } from "../check-in-out/useCheckout";
