@@ -30,5 +30,5 @@
 </p>
 
 
-<h2> The site : </h2>
+<h2> THE SITE: </h2>
 <h3>https://the-wild-oasis-finalproject.vercel.app</h3>
