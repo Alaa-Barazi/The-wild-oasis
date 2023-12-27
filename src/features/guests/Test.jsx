@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function Test() {
+function Test() {
   const [list, setList] = useState([]);
   useEffect(
     function () {
@@ -25,7 +25,7 @@ export function Test() {
     <div>
       {list.map((item) => (
         <div key={item.iso2}>
-          <span > {item.name}</span>
+          <span> {item.name}</span>
           <img
             src={`https://flagcdn.com/${item.iso2.toLowerCase()}.svg`}
             width="100"
