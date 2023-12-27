@@ -4,26 +4,25 @@ import { isBefore } from "date-fns";
 import { useSettings } from "../settings/useSettings";
 import { useState } from "react";
 
+import { useGuests } from "../guests/useGuests";
+import { useCabins } from "../cabins/useCabins";
+import { useCreateBooking } from "./useCreateBooking";
+
 import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import Checkbox from "../../ui/Checkbox";
 import Textarea from "../../ui/Textarea";
 import Spinner from "../../ui/Spinner";
-import { useGuests } from "../../hooks/useGuests";
 import ButtonGroup from "../../ui/ButtonGroup";
 import Button from "../../ui/Button";
-import { useCabins } from "../cabins/useCabins";
-import { useCreateBooking } from "./useCreateBooking";
 
 function NewBooking({ onCloseModal }) {
   const {
-    settings: {
       breakfastPrice,
       maxBookingLength,
       maxGuestsPerBooking,
       minBookingLength,
-    },
     isLoading: isLoadingSettings,
   } = useSettings();
   const { cabins, isLaoding: isLoadingCabins } = useCabins();
@@ -69,14 +68,14 @@ function NewBooking({ onCloseModal }) {
       totalPrice: cabinPrice + extrasPrice,
       cabinPrice,
     };
-    console.log(newData);
-     createBooking(newData);
-    //onCloseModal();
+    createBooking(newData);
+    onCloseModal();
   }
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <FormRow label="Guests">
         <select
+          disabled={isCreating}
           id="guestId"
           {...register("guestId", {
             required: "This field is required",
@@ -95,6 +94,7 @@ function NewBooking({ onCloseModal }) {
         <Input
           type="datetime-local"
           id="startDate"
+          disabled={isCreating}
           {...register("startDate", {
             validate: (value) =>
               isBefore(new Date(), value) || "Pick a valid date",
@@ -105,6 +105,7 @@ function NewBooking({ onCloseModal }) {
         <Input
           type="datetime-local"
           id="endDate"
+          disabled={isCreating}
           {...register("endDate", {
             validate: validateNumNights,
           })}
@@ -114,6 +115,7 @@ function NewBooking({ onCloseModal }) {
         <Input
           type="number"
           id="numGuests"
+          disabled={isCreating}
           value={numGuests}
           onChange={(e) => setNumGuests(Number(e.target.value))}
 
@@ -128,6 +130,7 @@ function NewBooking({ onCloseModal }) {
         <Checkbox
           value={breakfast}
           checked={breakfast}
+          disabled={isCreating}
           onChange={() => setBreakfast((breakfast) => !breakfast)}
           id="hasBreakfast"
           //   {...register("hasBreakfast")}
@@ -136,10 +139,16 @@ function NewBooking({ onCloseModal }) {
         </Checkbox>
       </FormRow>
       <FormRow label="Observations" error={errors?.observations?.message}>
-        <Textarea type="text" id="observations" {...register("observations")} />
+        <Textarea
+          type="text"
+          id="observations"
+          {...register("observations")}
+          disabled={isCreating}
+        />
       </FormRow>
       <FormRow label="Cabin" error={errors?.cabinId?.message}>
         <select
+          disabled={isCreating}
           id="cabinId"
           {...register("cabinId", {
             required: "This field is required",
