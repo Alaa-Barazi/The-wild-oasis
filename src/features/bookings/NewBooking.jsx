@@ -19,10 +19,10 @@ import Button from "../../ui/Button";
 
 function NewBooking({ onCloseModal }) {
   const {
-      breakfastPrice,
-      maxBookingLength,
-      maxGuestsPerBooking,
-      minBookingLength,
+    breakfastPrice,
+    maxBookingLength,
+    maxGuestsPerBooking,
+    minBookingLength,
     isLoading: isLoadingSettings,
   } = useSettings();
   const { cabins, isLaoding: isLoadingCabins } = useCabins();

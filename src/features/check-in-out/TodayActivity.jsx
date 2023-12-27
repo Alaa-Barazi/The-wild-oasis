@@ -8,7 +8,7 @@ import TodayItem from "./TodayItem";
 import Modal from "../../ui/Modal";
 import Button from "../../ui/Button";
 import { HiOutlinePlus, HiOutlinePlusCircle, HiPlus } from "react-icons/hi2";
-import NewBooking from "../bookings/newBooking";
+import NewBooking from "../bookings/NewBooking";
 
 const StyledToday = styled.div`
   /* Box */

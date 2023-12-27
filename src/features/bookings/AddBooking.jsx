@@ -1,6 +1,6 @@
 import Button from "../../ui/Button";
 import Modal from "../../ui/Modal";
-import NewBooking from "./newBooking";
+import NewBooking from "./NewBooking";
 
 function AddBooking() {
   return (
@@ -12,11 +12,9 @@ function AddBooking() {
         <Modal.Window name="newBooking">
           <NewBooking />
         </Modal.Window>
-        
       </Modal>
     </div>
   );
 }
-
 
 export default AddBooking;
