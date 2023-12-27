@@ -49,7 +49,6 @@ function App() {
               <Route path="bookings" element={<Bookings />} />
               <Route path="bookings/:bookingId" element={<Booking />} />
               <Route path="editBooking/:bookingId" element={<EditBooking />} />
-              {/* <Route path="test" element={<Test />} /> */}
               <Route path="checkin/:bookingId" element={<Checkin />} />
               <Route path="cabins" element={<Cabins />} />
               <Route path="users" element={<Users />} />

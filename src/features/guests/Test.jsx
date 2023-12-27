@@ -20,7 +20,6 @@ function Test() {
     },
     [setList]
   );
-  //
   return (
     <div>
       {list.map((item) => (
