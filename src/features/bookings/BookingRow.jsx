@@ -6,6 +6,7 @@ import {
   HiArrowDownOnSquare,
   HiArrowUpOnSquare,
   HiEye,
+  HiPencil,
   HiTrash,
 } from "react-icons/hi2";
 
@@ -20,6 +21,7 @@ import { formatDistanceFromNow } from "../../utils/helpers";
 
 import { useCheckout } from "../check-in-out/useCheckout";
 import { useDeleteBooking } from "./useDeleteBooking";
+import EditBooking from "./EditBooking";
 
 const Cabin = styled.div`
   font-size: 1.6rem;
@@ -48,8 +50,8 @@ const Amount = styled.div`
   font-weight: 500;
 `;
 
-function BookingRow({
-  booking: {
+function BookingRow({ booking }) {
+  const {
     id: bookingId,
     created_at,
     startDate,
@@ -60,8 +62,7 @@ function BookingRow({
     status,
     guests: { fullName: guestName, email },
     cabins: { name: cabinName },
-  },
-}) {
+  } = booking;
   const navigate = useNavigate();
   const { checkout, isCheckingOut } = useCheckout();
   const { deleteBooking, isDeleting } = useDeleteBooking();
@@ -113,6 +114,7 @@ function BookingRow({
                 Check in
               </Menus.Button>
             )}
+
             {status === "checked-in" && (
               <Menus.Button
                 icon={<HiArrowUpOnSquare />}
@@ -126,6 +128,11 @@ function BookingRow({
             <Modal.Open opens="delete">
               <Menus.Button icon={<HiTrash />}>Delete booking</Menus.Button>
             </Modal.Open>
+            {status === "unconfirmed" && (
+              <Modal.Open opens="edit">
+                <Menus.Button icon={<HiPencil />}>Edit </Menus.Button>
+              </Modal.Open>
+            )}
           </Menus.List>
         </Menus.Menu>
         <Modal.Window name="delete">
@@ -134,6 +141,10 @@ function BookingRow({
             disabled={isDeleting}
             onConfirm={() => deleteBooking(bookingId)}
           />
+        </Modal.Window>
+
+        <Modal.Window name="edit">
+          <EditBooking booking={booking}/>
         </Modal.Window>
       </Modal>
     </Table.Row>

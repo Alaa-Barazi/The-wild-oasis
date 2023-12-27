@@ -12,7 +12,7 @@ import Spinner from "../../ui/Spinner";
 import { useMoveBack } from "../../hooks/useMoveBack";
 import { useBooking } from "./useBooking";
 import { useNavigate } from "react-router-dom";
-import { HiArrowUpOnSquare, HiTrash } from "react-icons/hi2";
+import { HiArrowUpOnSquare, HiPencil, HiTrash } from "react-icons/hi2";
 import { useCheckout } from "../check-in-out/useCheckout";
 import { useDeleteBooking } from "./useDeleteBooking";
 import Modal from "../../ui/Modal";
@@ -68,6 +68,7 @@ function BookingDetail() {
             Check out
           </Button>
         )}
+       
         <Modal>
           <Modal.Open opens="delete">
             <Button variation="danger" disabled={isDeleting}>
