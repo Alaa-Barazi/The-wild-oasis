@@ -10,7 +10,11 @@ export function CreateGuest() {
   return (
     <Form>
       <FormRow>
-        <Input type="text" id="fullName" />
+        <Input
+          type="text"
+          id="fullName"
+          {...register("fullName", { required: "This field is required" })}
+        />
       </FormRow>
     </Form>
   );
