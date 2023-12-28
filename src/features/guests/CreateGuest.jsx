@@ -12,7 +12,7 @@ import ButtonGroup from "../../ui/ButtonGroup";
 import Button from "../../ui/Button";
 
 const BASE_FLAG_URL = "https://flagcdn.com/";
-function CreateGuest() {
+function CreateGuest({ onChange }) {
   const { createGuest, isCreating } = useNewGuest();
   const { register, handleSubmit, formState, getValues, control, reset } =
     useForm();
@@ -30,6 +30,7 @@ function CreateGuest() {
     };
     createGuest(newGuest);
     reset();
+    onChange();
   }
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -81,7 +82,12 @@ function CreateGuest() {
       </FormRow>
 
       <ButtonGroup>
-        <Button variation="secondary" type="reset" disabled={isCreating}>
+        <Button
+          variation="secondary"
+          type="reset"
+          disabled={isCreating}
+          onClick={onChange}
+        >
           Cancel
         </Button>
         <Button disabled={isCreating}>Create New Guest</Button>

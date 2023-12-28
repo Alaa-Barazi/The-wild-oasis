@@ -9,6 +9,7 @@ import Modal from "../../ui/Modal";
 import Button from "../../ui/Button";
 import { HiOutlinePlus, HiOutlinePlusCircle, HiPlus } from "react-icons/hi2";
 import NewBooking from "../bookings/NewBooking";
+import { Link } from "react-router-dom";
 
 const StyledToday = styled.div`
   /* Box */
@@ -49,17 +50,9 @@ function TodayActivity() {
     <StyledToday>
       <Row type="horizontal">
         <Heading as="h2">Today</Heading>
-
-        <Modal>
-          <Modal.Open opens="newBooking">
-            <Button size="small" variation="primary">
-              New booking &nbsp; +
-            </Button>
-          </Modal.Open>
-          <Modal.Window name="newBooking">
-            <NewBooking />
-          </Modal.Window>
-        </Modal>
+        <Link to="/newBooking">
+          <Button>New booking &nbsp; +</Button>
+        </Link>
       </Row>
 
       {!isLoading ? (
